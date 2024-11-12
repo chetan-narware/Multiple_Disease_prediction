@@ -10,8 +10,8 @@ from PIL import Image
 heart_model = pickle.load(open("./models/heart.sav",'rb'))
 parkinsons_model = pickle.load(open("./models/parkinsons.sav",'rb'))
 diabeties_model = pickle.load(open("./models/diabetes.sav",'rb'))
-Pneumonia_model = load_model('pneumonia_model.h5')
-brain_model = load_model('brain_model.h5')
+Pneumonia_model = load_model('./models/pneumonia_model.h5')
+brain_model = load_model('./models/brain_model.h5')
 loaded_scaler = pickle.load(open('./models/sc_diabeties.pkl','rb'))
 
 def diabetes_prediction(input_data):
