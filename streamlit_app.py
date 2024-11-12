@@ -10,8 +10,8 @@ from PIL import Image
 heart_model = pickle.load(open("./models/heart.sav",'rb'))
 parkinsons_model = pickle.load(open("./models/parkinsons.sav",'rb'))
 diabeties_model = pickle.load(open("./models/diabetes.sav",'rb'))
-Pneumonia_model = load_model('./models/pneumonia_model.h5')
-brain_model = load_model('./models/brain_model.h5')
+pm = load_model("./models/pneumonia_model.h5")
+bm = load_model("./models/brain_model.h5")
 loaded_scaler = pickle.load(open('./models/sc_diabeties.pkl','rb'))
 
 def diabetes_prediction(input_data):
@@ -49,14 +49,14 @@ def predict_Pneumonia(img):
     img = img.convert("RGB")
     img_array = im.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0) / 255.0
-    prediction = Pneumonia_model.predict(img_array)
+    prediction = pm.predict(img_array)
     return "PNEUMONIA" if prediction > 0.5 else "NORMAL"
 
 class_names = ['glioma', 'meningioma', 'notumor', 'pituitary']
 def predict_brain(img):
     img_array = im.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0) / 255.0
-    prediction = brain_model.predict(img_array)
+    prediction = bm.predict(img_array)
     predicted_class = class_names[np.argmax(prediction)]
     return predicted_class
 
