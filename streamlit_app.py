@@ -77,12 +77,12 @@ if selected == 'Diabetes Prediction':
     
     #getting input data from the use
     pregnancies = st.number_input("Number of Pregnancies", min_value=0, max_value=20, value=1, step=1)
-    glucose = st.number_input("Glucose Level (mg/dL)", min_value=0.0, max_value=200.0, value=100.0)
-    blood_pressure = st.number_input("Blood Pressure (mm Hg)", min_value=0.0, max_value=150.0, value=70.0)
-    skin_thickness = st.number_input("Skin Thickness (mm)", min_value=0.0, max_value=100.0, value=20.0)
-    insulin = st.number_input("Insulin Level (µU/mL)", min_value=0.0, max_value=500.0, value=80.0)
-    bmi = st.number_input("BMI (Body Mass Index)", min_value=0.0, max_value=60.0, value=25.0)
-    diabetes_pedigree_function = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=2.5, value=0.5)
+    glucose = st.number_input("Glucose Level (mg/dL)", min_value=0.0, max_value=200.0, value=100.0, step=1.0)
+    blood_pressure = st.number_input("Blood Pressure (mm Hg)", min_value=0.0, max_value=250.0, value=70.0, step=1.0)
+    skin_thickness = st.number_input("Skin Thickness (mm)", min_value=0.0, max_value=100.0, value=20.0, step=1.0)
+    insulin = st.number_input("Insulin Level (µU/mL)", min_value=0.0, max_value=500.0, value=80.0, step=1.0)
+    bmi = st.number_input("BMI (Body Mass Index)", min_value=0.0, max_value=60.0, value=25.0, step=0.1)
+    diabetes_pedigree_function = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=2.5, value=0.5, step=0.01)
     age = st.number_input("Age", min_value=1, max_value=120, value=25, step=1)
 
     # Button to submit
@@ -97,19 +97,20 @@ if selected == 'Heart Disease Prediction':
 
     st.title('Heart Disease Prediction Using Descition Tree')
     #input
-    age = st.number_input("Age", min_value=1, max_value=120, value=25)
+    age = st.number_input("Age", min_value=1, max_value=120, value=25, step=1)
     sex = st.selectbox("Sex (1 = Male, 0 = Female)", [1, 0])
     cp = st.selectbox("Chest Pain Type (0-3)", [0, 1, 2, 3])
-    trestbps = st.number_input("Resting Blood Pressure", min_value=80, max_value=200, value=120)
-    chol = st.number_input("Cholesterol Level", min_value=100, max_value=400, value=200)
+    trestbps = st.number_input("Resting Blood Pressure", min_value=80, max_value=200, value=120, step=1)
+    chol = st.number_input("Cholesterol Level", min_value=100, max_value=400, value=200, step=1)
     fbs = st.selectbox("Fasting Blood Sugar > 120 mg/dl (1 = True, 0 = False)", [1, 0])
     restecg = st.selectbox("Resting ECG Results (0-2)", [0, 1, 2])
-    thalach = st.number_input("Maximum Heart Rate Achieved", min_value=60, max_value=220, value=150)
+    thalach = st.number_input("Maximum Heart Rate Achieved", min_value=60, max_value=220, value=150, step=1)
     exang = st.selectbox("Exercise Induced Angina (1 = Yes, 0 = No)", [1, 0])
-    oldpeak = st.number_input("ST Depression Induced by Exercise", min_value=0.0, max_value=10.0, value=1.0)
+    oldpeak = st.number_input("ST Depression Induced by Exercise", min_value=0.0, max_value=10.0, value=1.0, step=0.1)
     slope = st.selectbox("Slope of Peak Exercise ST Segment (0-2)", [0, 1, 2])
     ca = st.selectbox("Number of Major Vessels Colored by Fluoroscopy (0-3)", [0, 1, 2, 3])
     thal = st.selectbox("Thalassemia (0 = Normal, 1 = Fixed Defect, 2 = Reversible Defect)", [0, 1, 2])
+
 
     # Button to submit
     des = ''
@@ -121,29 +122,28 @@ if selected == 'Heart Disease Prediction':
 
 if selected == 'Parkinsons Disease Prediction':
 
-    st.title('Parkinsons Disease Prediction Using SVM')
-    mdvp_fo = st.number_input("MDVP:Fo(Hz)", min_value=0.0, value=120.0)
-    mdvp_fhi = st.number_input("MDVP:Fhi(Hz)", min_value=0.0, value=150.0)
-    mdvp_flo = st.number_input("MDVP:Flo(Hz)", min_value=0.0, value=100.0)
-    mdvp_jitter_percent = st.number_input("MDVP:Jitter(%)", min_value=0.0, value=0.005)
-    mdvp_jitter_abs = st.number_input("MDVP:Jitter(Abs)", min_value=0.0, value=0.00005)
-    mdvp_rap = st.number_input("MDVP:RAP", min_value=0.0, value=0.003)
-    mdvp_ppq = st.number_input("MDVP:PPQ", min_value=0.0, value=0.005)
-    jitter_ddp = st.number_input("Jitter:DDP", min_value=0.0, value=0.015)
-    mdvp_shimmer = st.number_input("MDVP:Shimmer", min_value=0.0, value=0.03)
-    mdvp_shimmer_db = st.number_input("MDVP:Shimmer(dB)", min_value=0.0, value=0.3)
-    shimmer_apq3 = st.number_input("Shimmer:APQ3", min_value=0.0, value=0.02)
-    shimmer_apq5 = st.number_input("Shimmer:APQ5", min_value=0.0, value=0.025)
-    mdvp_apq = st.number_input("MDVP:APQ", min_value=0.0, value=0.03)
-    shimmer_dda = st.number_input("Shimmer:DDA", min_value=0.0, value=0.08)
-    nhr = st.number_input("NHR", min_value=0.0, value=0.02)
-    hnr = st.number_input("HNR", min_value=0.0, value=20.0)
-    rpde = st.number_input("RPDE", min_value=0.0, max_value=1.0, value=0.4)
-    dfa = st.number_input("DFA", min_value=0.0, max_value=1.0, value=0.6)
-    spread1 = st.number_input("Spread1", min_value=-10.0, max_value=10.0, value=-5.0)
-    spread2 = st.number_input("Spread2", min_value=-5.0, max_value=5.0, value=0.5)
-    d2 = st.number_input("D2", min_value=0.0, value=2.0)
-    ppe = st.number_input("PPE", min_value=0.0, value=0.2)
+    mdvp_fo = st.number_input("MDVP:Fo(Hz)", min_value=0.0, value=120.0, step=0.1)
+    mdvp_fhi = st.number_input("MDVP:Fhi(Hz)", min_value=0.0, value=150.0, step=0.1)
+    mdvp_flo = st.number_input("MDVP:Flo(Hz)", min_value=0.0, value=100.0, step=0.1)
+    mdvp_jitter_percent = st.number_input("MDVP:Jitter(%)", min_value=0.0, value=0.005, step=0.001)
+    mdvp_jitter_abs = st.number_input("MDVP:Jitter(Abs)", min_value=0.0, value=0.00005, step=0.00001)
+    mdvp_rap = st.number_input("MDVP:RAP", min_value=0.0, value=0.003, step=0.001)
+    mdvp_ppq = st.number_input("MDVP:PPQ", min_value=0.0, value=0.005, step=0.001)
+    jitter_ddp = st.number_input("Jitter:DDP", min_value=0.0, value=0.015, step=0.001)
+    mdvp_shimmer = st.number_input("MDVP:Shimmer", min_value=0.0, value=0.03, step=0.001)
+    mdvp_shimmer_db = st.number_input("MDVP:Shimmer(dB)", min_value=0.0, value=0.3, step=0.1)
+    shimmer_apq3 = st.number_input("Shimmer:APQ3", min_value=0.0, value=0.02, step=0.001)
+    shimmer_apq5 = st.number_input("Shimmer:APQ5", min_value=0.0, value=0.025, step=0.001)
+    mdvp_apq = st.number_input("MDVP:APQ", min_value=0.0, value=0.03, step=0.001)
+    shimmer_dda = st.number_input("Shimmer:DDA", min_value=0.0, value=0.08, step=0.01)
+    nhr = st.number_input("NHR", min_value=0.0, value=0.02, step=0.001)
+    hnr = st.number_input("HNR", min_value=0.0, value=20.0, step=1.0)
+    rpde = st.number_input("RPDE", min_value=0.0, max_value=1.0, value=0.4, step=0.01)
+    dfa = st.number_input("DFA", min_value=0.0, max_value=1.0, value=0.6, step=0.01)
+    spread1 = st.number_input("Spread1", min_value=-10.0, max_value=10.0, value=-5.0, step=0.1)
+    spread2 = st.number_input("Spread2", min_value=-5.0, max_value=5.0, value=0.5, step=0.1)
+    d2 = st.number_input("D2", min_value=0.0, value=2.0, step=0.1)
+    ppe = st.number_input("PPE", min_value=0.0, value=0.2, step=0.01)
 
     # Button for prediction
     des = ''
