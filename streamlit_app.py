@@ -117,6 +117,7 @@ if selected == 'Brain Tumor Classification':
     if uploaded_file is not None:
         st.write('image uploaded succesfully')
         image = Image.open(uploaded_file)
+        st.image(image, caption="Uploaded Image", use_container_width =False)
         des = ''
         resized_image = image.resize((150,150))
         if st.button('Brain Tumor Type'):
@@ -130,6 +131,7 @@ if selected == 'Pneumonia Prediction':
     if uploaded_file is not None:
         st.write('image uploaded succesfully')
         image = Image.open(uploaded_file)
+        st.image(image, caption="Uploaded Image", use_container_width =False)
         des = ''
         resized_image = image.resize((150,150))
         if st.button('Result'):
