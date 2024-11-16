@@ -25,16 +25,6 @@ def diabetes_prediction(input_data):
     else:
         return 'Diabetic'
     
-def parkinsons_prediction(input_data):
-    inp = np.asarray(input_data)
-    inp_reshaped = inp.reshape(1,-1)
-    pred = parkinsons_model.predict(inp_reshaped)
-
-    if pred[0] == 0:
-        return 'Have Parkinsons'
-    else:
-        return 'Do Not Have Parkinsons'
-    
 def  Heart_disease_prediction(input_data):
     inp = np.asarray(input_data)
     inp_reshaped = inp.reshape(1,-1)
@@ -65,7 +55,6 @@ with st.sidebar:
     selected = option_menu('Multiple Disease Prediction System',
                            ['Home','Diabetes Prediction',
                            'Heart Disease Prediction',
-                           'Parkinsons Disease Prediction',
                            'Brain Tumor Classification',
                            'Pneumonia Prediction'],default_index= 0)
     
@@ -118,40 +107,7 @@ if selected == 'Heart Disease Prediction':
         des = Heart_disease_prediction([age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal])
     st.success(des)
 
-
-
-if selected == 'Parkinsons Disease Prediction':
-
-    mdvp_fo = st.slider("MDVP:Fo(Hz)", min_value=0.0, max_value=500.0, value=120.0)
-    mdvp_fhi = st.slider("MDVP:Fhi(Hz)", min_value=0.0, max_value=500.0, value=150.0)
-    mdvp_flo = st.slider("MDVP:Flo(Hz)", min_value=0.0, max_value=500.0, value=100.0)
-    mdvp_jitter_percent = st.slider("MDVP:Jitter(%)", min_value=0.0, max_value=1.0, value=0.005)
-    mdvp_jitter_abs = st.slider("MDVP:Jitter(Abs)", min_value=0.0, max_value=0.01, value=0.00005)
-    mdvp_rap = st.slider("MDVP:RAP", min_value=0.0, max_value=0.1, value=0.003)
-    mdvp_ppq = st.slider("MDVP:PPQ", min_value=0.0, max_value=0.1, value=0.005)
-    jitter_ddp = st.slider("Jitter:DDP", min_value=0.0, max_value=0.1, value=0.015)
-    mdvp_shimmer = st.slider("MDVP:Shimmer", min_value=0.0, max_value=0.1, value=0.03)
-    mdvp_shimmer_db = st.slider("MDVP:Shimmer(dB)", min_value=0.0, max_value=1.0, value=0.3)
-    shimmer_apq3 = st.slider("Shimmer:APQ3", min_value=0.0, max_value=0.1, value=0.02)
-    shimmer_apq5 = st.slider("Shimmer:APQ5", min_value=0.0, max_value=0.1, value=0.025)
-    mdvp_apq = st.slider("MDVP:APQ", min_value=0.0, max_value=0.1, value=0.03)
-    shimmer_dda = st.slider("Shimmer:DDA", min_value=0.0, max_value=0.3, value=0.08)
-    nhr = st.slider("NHR", min_value=0.0, max_value=1.0, value=0.02)
-    hnr = st.slider("HNR", min_value=0.0, max_value=50.0, value=20.0)
-    rpde = st.slider("RPDE", min_value=0.0, max_value=1.0, value=0.4)
-    dfa = st.slider("DFA", min_value=0.0, max_value=1.0, value=0.6)
-    spread1 = st.slider("Spread1", min_value=-10.0, max_value=10.0, value=-5.0)
-    spread2 = st.slider("Spread2", min_value=-5.0, max_value=5.0, value=0.5)
-    d2 = st.slider("D2", min_value=0.0, max_value=5.0, value=2.0)
-    ppe = st.slider("PPE", min_value=0.0, max_value=1.0, value=0.2)
-    # Button for prediction
-    des = ''
-    if st.button('Predict Parkinson\'s Disease'):
-        input_data = np.array([mdvp_fo, mdvp_fhi, mdvp_flo, mdvp_jitter_percent, mdvp_jitter_abs, mdvp_rap, 
-                               mdvp_ppq, jitter_ddp, mdvp_shimmer, mdvp_shimmer_db, shimmer_apq3, shimmer_apq5, 
-                               mdvp_apq, shimmer_dda, nhr, hnr, rpde, dfa, spread1, spread2, d2, ppe])
-        des = parkinsons_prediction(input_data)
-    st.success(des)    
+    
 
 if selected == 'Brain Tumor Classification':
 
